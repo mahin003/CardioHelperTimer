@@ -1,0 +1,58 @@
+#formDiv{
+   width: 70%;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top:70px;
+   border-radius: 40px;
+   padding: 10px;
+   /* padding-top: 40px; */
+}
+#formDiv input{
+  margin: 10px;
+}
+#stopDiv{
+    
+    width:360px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+#stopDiv Button{
+    width:100%;
+    font-size: 40px;
+    color: red;
+   
+}
+#timerDiv{
+    
+    width:550px;
+    /* height:500px; */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+.timer{
+    width: 300px;
+    height:300px;
+    border-radius: 50%;
+    border:2px solid rgb(25, 182, 25);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top:-20px;
+   
+}
+#timerDiv p{
+    color: rgb(20, 17, 17);
+}
+.theP{
+   
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30%;
+}
+#DoOrDie{
+    font-size:50px;
+}
+#DoOrDie p{
+    text-align:center;
+}

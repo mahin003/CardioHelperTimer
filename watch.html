@@ -1,0 +1,126 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>CARDI_HOO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div style="height:100vh;border: 1px solid red; background-color:#fff9f9">
+
+        <div id="formDiv" style="display:block;">
+            <input style="font-size: 40px;" type="number" id="eTime" placeholder="Exercise">
+            <input style="font-size: 40px;" type="number" id="rTime" placeholder="Rest">
+            <input style="font-size: 40px;" type="number" id="loop" placeholder="LOOP">
+            <input style="font-size: 40px;" type="submit" onclick="SubmitTimeForm()" value="Submit" placeholder="">
+        </div> 
+        <!-- style="display:none;" -->
+      
+        <div id="timerDiv" style="display:none;"  >
+            <p style="font-size: 47px;text-align:center;margin-top: -4px;"><span id="Loop"></span> reps</p>
+            <div id="DoOrDie" style="display:none;">
+                <p id="ex"  style="display:none;margin-top: -12px;"> Extercise</p>
+                <p id="re" style="display:none;margin-top: -12px;">Rest</p>
+            </div>
+            <div class="timer"><p class="theP" style="font-size: 77px;text-align:center;"><span id="Time">0</span> sec</p></div> 
+        </div>
+
+        <div id="stopDiv" style="display:none;">
+            <Button onclick="stopButton()" class="stop">STOP</Button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        var x = 0;
+        var t = 0;
+        var l = 0;
+        var lx = 0;
+        var r = 0;
+        var rst = false;
+        const Timer = () => {
+            t = t + 1;
+            console.log("t ", t);
+            if (lx && rst == false && t > x) {
+                t = 0;
+                rst = true;
+            }
+            else if (lx && rst == true && t > r) {
+                t = 0;
+                rst = false;              
+                lx = lx - 1;
+                document.getElementById("Loop").innerText = lx;
+
+            }
+            if (lx && rst == false) {
+                //console.log("rest ", rst);
+                if (t <= x) {
+                    console.log(rst, " => ", t, " ", x);
+                    document.getElementById("ex").style.display = "block";
+                    document.getElementById("re").style.display = "none";
+                    document.getElementById("Time").innerText = t;
+                    document.getElementById("Time").style.color = "black";
+
+                    setTimeout("Timer()", 1000);
+
+                }
+            }
+            else if (lx && rst == true) {
+                //console.log("rest ", rst);
+                if (t <= r) {
+                    console.log(rst, " => ", t, " ", r);
+                    document.getElementById("re").style.display = "block";
+                    document.getElementById("ex").style.display = "none";
+                    document.getElementById("Time").innerText = t;
+                    document.getElementById("Time").style.color = "green";
+                    setTimeout("Timer()", 1000);
+
+                }
+            }
+
+        }
+        const SubmitTimeForm = (e) => {
+            console.log("Submitted");
+            const eTime = document.getElementById("eTime").value;
+            const rTime = document.getElementById("rTime").value;
+            const loop = document.getElementById("loop").value;
+            exTime = parseInt(eTime, 10);
+            reTime = parseInt(rTime, 10);
+            Loop = parseInt(loop, 10);
+            console.log(exTime, "", eTime);
+            console.log((exTime), typeof (reTime));
+            x = exTime;
+            r = reTime;
+            lx = Loop;
+            console.log("XX ", r);
+            document.getElementById("formDiv").style.display = "none";
+            document.getElementById("timerDiv").style.display = "block";
+            document.getElementById("stopDiv").style.display = "block";
+            document.getElementById("DoOrDie").style.display = "block";
+            document.getElementById("Loop").innerText = lx;
+            Timer();
+
+        }
+
+        const stopButton = () => {
+            x = 0;
+            t = 0;
+            l = 0;
+            lx = 0;
+            r = 0;
+            rst = false;
+            document.getElementById("eTime").value="";
+            document.getElementById("rTime").value="";
+            document.getElementById("loop").value="";
+            document.getElementById("DoOrDie").style.display = "none";
+            document.getElementById("formDiv").style.display = "block";
+            document.getElementById("timerDiv").style.display = "none";
+            document.getElementById("stopDiv").style.display = "none";
+        }
+
+    </script>
+
+</body>
+
+</html
